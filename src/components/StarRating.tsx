@@ -102,7 +102,8 @@ const AdvancedStarRating: React.FC<AdvancedStarRatingProps> = ({
           return (
             <button
               key={index}
-              ref={el => (starRefs.current[index] = el)}
+              // ref={el => (starRefs.current[index] = el)}
+              ref={el => { starRefs.current[index] = el; }}
               type='button'
               className={`${sizeClasses[size]} transition-all duration-200 ${
                 fillType !== 'empty' ? 'text-yellow-400' : 'text-gray-300'
