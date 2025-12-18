@@ -101,7 +101,7 @@ const Register: React.FC = () => {
         {
           headers: {
             'x-api-key':
-              '2c5381952acd7c2d530e6c656d2f6d94142f4f3e84c1c7d2b48dabdd976b0e06'
+              'a79ae76d2e814002e728412a6e4d59b85b439c7ed8e2bc14bb0f52bf6d63cb75'
           }
         }
       )
