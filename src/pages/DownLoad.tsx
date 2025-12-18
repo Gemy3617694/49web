@@ -23,7 +23,7 @@ const DownLoad = () => {
             <img src={smallLogo} alt='logo' />
           </div>
           <div className='flex flex-col gap-2 items-center justify-end text-center '>
-            <h2 className='font-extrabold text-sm capitalize'>{trans[lang as 'en' | 'ar'].title}</h2>
+            <h2 className='font-extrabold text-sm capitalize'>{trans[lang as 'en' | 'ar']?.title || ''}</h2>
             <AdvancedStarRating readonly={true} rating={5}/>
           </div>
         </div>
@@ -38,10 +38,10 @@ const DownLoad = () => {
             lang === 'en' ? 'text-2xl' : 'text-2xl'
           } text-white text-center font-bold`}
         >
-          {trans[lang as 'en' | 'ar'].title}
+          {trans[lang as 'en' | 'ar']?.title}
         </h1>
         <p className='text-xl font-semibold text-[#F33D49] tracking-[3px]'>
-          {trans[lang as 'en' | 'ar'].subTitle}
+          {trans[lang as 'en' | 'ar']?.subTitle}
         </p>
       </div>
       <div className=' p-4 max-w-full flex flex-col  items-center gap-4'>
