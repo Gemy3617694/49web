@@ -37,6 +37,7 @@ const Register: React.FC = () => {
   const navigate = useNavigate()
   const dirInLocal = localStorage.getItem('dir') as 'ltr' | 'rtl' | null
   const lang = localStorage.getItem('lang') || 'en'
+  const code = localStorage.getItem('code')
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
@@ -74,12 +75,10 @@ const Register: React.FC = () => {
 
   const onSubmit = async (data: RegisterFormData) => {
     try {
- 
-      
       const errorPhoneOrEmail = checkTextTypePhoneOrEmail(data.email)
       if (errorPhoneOrEmail === 'unknown') {
         toast.error('Please enter a valid email or phone number')
-      }      
+      }
       const response: any = await axios.post(
         checkTextTypePhoneOrEmail(data.email) === 'email'
           ? registerWithEmail
@@ -88,15 +87,16 @@ const Register: React.FC = () => {
           firstName: data.firstName,
           lastName: data.lastName,
           birthday: data.dateOfBirth,
-          ...(errorPhoneOrEmail=== 'phone' && { phoneNumber: data.email }),
-          ...(errorPhoneOrEmail=== 'email' && { email: data.email }),
+          ...(errorPhoneOrEmail === 'phone' && { phoneNumber: data.email }),
+          ...(errorPhoneOrEmail === 'email' && { email: data.email }),
           gender: data.gender,
           password: data.password,
           confirmPassword: data.confirmPassword,
           username: data.username,
           deviceId: '668e7b04be8cfesdsc5bc0c432afw9',
-          ...(errorPhoneOrEmail=== 'phone' && { fcmToken: fcmToken }),
-          ...(errorPhoneOrEmail=== 'email' && { fcm: fcmToken }),
+          ...(errorPhoneOrEmail === 'phone' && { fcmToken: fcmToken }),
+          ...(errorPhoneOrEmail === 'email' && { fcm: fcmToken }),
+          ...(code && { referralId: code })
         },
         {
           headers: {
@@ -106,14 +106,14 @@ const Register: React.FC = () => {
         }
       )
       if (response.status === 201) {
-        localStorage.setItem("isRegistered", 'true')
+        localStorage.setItem('isRegistered', 'true')
         toast.success(
           lang === 'en'
             ? 'Registration successful Download the app and enjoy all its features'
             : ' تم التسجيل بنجاح حمل التطبيق واستمتع'
         )
+        localStorage.removeItem('code')
         navigate('/download')
-
       }
     } catch (error: any) {
       console.error('Registration error:', error?.response.data.error.message)
@@ -218,11 +218,9 @@ const Register: React.FC = () => {
             </button>
           </div>
         </div>
-        {
-  errors.gender && (
-    <p className='text-red-500 text-sm mt-0'>{errors.gender.message}</p>
-  )
-}
+        {errors.gender && (
+          <p className='text-red-500 text-sm mt-0'>{errors.gender.message}</p>
+        )}
 
         {/* Username */}
         <div className='w-full'>
@@ -256,8 +254,6 @@ const Register: React.FC = () => {
             error={errors.email?.message}
           />
         </div>
-
-      
 
         {/* Password */}
         <div className='w-full'>
