@@ -1,7 +1,7 @@
 import logo from '../assets/logo2.svg'
 import langIcon from '../assets/lang.png'
 import trans from '../translations/trans'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import emailIcon from '../assets/login-email.svg'
 import googleIcon from '../assets/google.svg'
 
@@ -12,10 +12,20 @@ const Home = ({
   handleChange: () => void
   lang: string
 }) => {
+  const [searchParams] = useSearchParams()
+const code = searchParams.get('code') // '52456'
+
+
+console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",code);
+
   const navigate = useNavigate()
 
   const handleRegisterClick = () => {
     navigate('/register')
+  }
+
+  if(code){
+    localStorage.setItem('code', code)
   }
 
   return (
