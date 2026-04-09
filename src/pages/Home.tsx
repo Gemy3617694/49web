@@ -28,6 +28,10 @@ const code = searchParams.get('code') // '52456'
     localStorage.setItem('code', code)
   }
 
+  if(code){
+    localStorage.setItem('code', code)
+  }
+
   return (
     <div className='flex flex-col h-screen overflow-hidden'>
       {/* ===== Top Section ===== */}
