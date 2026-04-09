@@ -16,7 +16,7 @@ const Home = ({
 const code = searchParams.get('code') // '52456'
 
 
-console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",code);
+
 
   const navigate = useNavigate()
 
@@ -54,17 +54,17 @@ console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",code);
           {trans[lang as 'en' | 'ar'].subTitle}
         </p>
 
-        <p className='text-md text-center text-white'>
+        <p className='text-lg text-center text-white'>
           {trans[lang as 'en' | 'ar'].disc}
         </p>
       </div>
 
       {/* ===== Bottom Section (Fixed Height) ===== */}
-      <div className='font-bold h-[240px] bg-white rounded-t-3xl p-7 flex flex-col items-center justify-between'>
-        <button className='w-full flex items-center gap-2 bg-white border-2 border-main hover:bg-main hover:text-white rounded-3xl p-3'>
+      <div className='font-bold h-[150px] bg-white rounded-t-3xl p-7 flex flex-col items-center justify-center'>
+        {/* <button className='w-full flex items-center gap-2 bg-white border-2 border-main hover:bg-main hover:text-white rounded-3xl p-3'>
           <img src={emailIcon} alt='logo' className='w-6 h-6' />
           <span>{trans[lang as 'en' | 'ar'].loginEmail}</span>
-        </button>
+        </button> */}
 
         <button
           onClick={handleRegisterClick}
@@ -73,10 +73,10 @@ console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",code);
           {trans[lang as 'en' | 'ar'].signup}
         </button>
 
-        <button className='w-full flex items-center gap-2 bg-white border-2 border-main hover:bg-main hover:text-white rounded-3xl p-3'>
+        {/* <button className='w-full flex items-center gap-2 bg-white border-2 border-main hover:bg-main hover:text-white rounded-3xl p-3'>
           <img src={googleIcon} alt='logo' className='w-6 h-6' />
           <span>{trans[lang as 'en' | 'ar'].loginGoogle}</span>
-        </button>
+        </button> */}
       </div>
     </div>
   )
