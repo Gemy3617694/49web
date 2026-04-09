@@ -2,8 +2,7 @@ import logo from '../assets/logo2.svg'
 import langIcon from '../assets/lang.png'
 import trans from '../translations/trans'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import emailIcon from '../assets/login-email.svg'
-import googleIcon from '../assets/google.svg'
+
 
 const Home = ({
   handleChange,
